@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33130.400
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library_bfk", "Library_bfk.csproj", "{C1377024-3184-499D-BB4E-26027F43C1EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1377024-3184-499D-BB4E-26027F43C1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1377024-3184-499D-BB4E-26027F43C1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1377024-3184-499D-BB4E-26027F43C1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1377024-3184-499D-BB4E-26027F43C1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8EA8D56-7F46-4339-B526-218C0E15CDEC}
+	EndGlobalSection
+EndGlobal
