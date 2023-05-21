@@ -95,6 +95,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewBookStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewBookStudent.Designer.cs">
+      <DependentUpon>ViewBookStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GiveBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GiveBook.Designer.cs">
+      <DependentUpon>GiveBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddStudent.Designer.cs">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddGroupe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +130,12 @@
     </Compile>
     <Compile Include="Forms\AddFaculty.Designer.cs">
       <DependentUpon>AddFaculty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchStudent.Designer.cs">
+      <DependentUpon>SearchStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Search.cs">
       <SubType>Form</SubType>
@@ -166,6 +190,15 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewBookStudent.resx">
+      <DependentUpon>ViewBookStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GiveBook.resx">
+      <DependentUpon>GiveBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddStudent.resx">
+      <DependentUpon>AddStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddGroupe.resx">
       <DependentUpon>AddGroupe.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddFaculty.resx">
       <DependentUpon>AddFaculty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchStudent.resx">
+      <DependentUpon>SearchStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Search.resx">
       <DependentUpon>Search.cs</DependentUpon>
@@ -269,6 +305,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Img\close.png" />
+    <None Include="Img\book-out.png" />
+    <None Include="Img\book-in.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Book.Context.tt">

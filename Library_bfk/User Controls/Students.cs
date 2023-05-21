@@ -62,7 +62,7 @@ namespace Library_bfk.User_Controls
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            using (AddBook f = new AddBook())
+            using (AddStudent f = new AddStudent())
             {
                 DialogResult result = f.ShowDialog(this);
 
@@ -70,32 +70,21 @@ namespace Library_bfk.User_Controls
                 {
                     using (library_bfkEntities context = new library_bfkEntities())
                     {
-                        var number = context.books.Where(b => b.inventory_number == f.bookNumber).FirstOrDefault();
-                        if (number != null)
-                        {
-                            MessageBox.Show("Книга з таким інвентарним номером вже існує у базі", "Дублікат",
-                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            book b = new book();
+                        stud s = new stud();
 
-                            b.name = f.bookName;
-                            b.publisher = f.bookPublisher;
-                            b.year = f.bookYear;
-                            b.author = f.bookAuthor;
-                            b.pages = f.bookPages;
-                            b.isbn = f.bookIsbn;
-                            b.inventory_number = f.bookNumber;
-                            b.status = f.bookStatus;
+                        s.name = f.studName;
+                        s.surname = f.studSurname;
+                        s.specialty = f.studSpecialty;
+                        s.faculty_id = f.studFaculty;
+                        s.unit_id = f.studUnit;
+                        s.group_id = f.studGroup;
 
-                            context.books.Add(b);
-                            context.SaveChanges();
+                        context.studs.Add(s);
+                        context.SaveChanges();
 
-                            MessageBox.Show("Книга успішно додана до бази!", "Книгу додано",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Студента успішно додано до бази!", "Студента додано",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        }
                     }
                     LoadData();
                 }
@@ -114,56 +103,24 @@ namespace Library_bfk.User_Controls
             {
                 using (library_bfkEntities context = new library_bfkEntities())
                 {
-                    book b = context.books.Find(id);
-                    using (AddBook f = new AddBook(b.name, b.publisher, b.year, b.author, b.pages,
-                        b.isbn, b.inventory_number, b.status))
+                    stud s = context.studs.Find(id);
+                    using (AddStudent f = new AddStudent(s.name, s.surname, s.specialty, studFaculty.Text,
+                         studUnit.Text, studGroupe.Text))
                     {
                         DialogResult result = f.ShowDialog(this);
-
                         if (result == DialogResult.OK)
                         {
-                            if (b.inventory_number != f.bookNumber)
-                            {
-                                var number = context.books.Where(x => x.inventory_number == f.bookNumber).FirstOrDefault();
-                                if (number != null)
-                                {
-                                    MessageBox.Show("Книга з таким інвентарним номером вже існує у базі", "Дублікат",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                else
-                                {
-                                    b.name = f.bookName;
-                                    b.publisher = f.bookPublisher;
-                                    b.year = f.bookYear;
-                                    b.author = f.bookAuthor;
-                                    b.pages = f.bookPages;
-                                    b.isbn = f.bookIsbn;
-                                    b.inventory_number = f.bookNumber;
-                                    b.status = f.bookStatus;
+                            s.name = f.studName;
+                            s.surname = f.studSurname;
+                            s.specialty = f.studSpecialty;
+                            s.faculty_id = f.studFaculty;
+                            s.unit_id = f.studUnit;
+                            s.group_id = f.studGroup;
 
-                                    context.SaveChanges();
+                            context.SaveChanges();
 
-                                    MessageBox.Show("Книга успішно оновлена у базі!", "Книгу оновлено",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                }
-                            }
-                            else
-                            {
-                                b.name = f.bookName;
-                                b.publisher = f.bookPublisher;
-                                b.year = f.bookYear;
-                                b.author = f.bookAuthor;
-                                b.pages = f.bookPages;
-                                b.isbn = f.bookIsbn;
-                                b.inventory_number = f.bookNumber;
-                                b.status = f.bookStatus;
-
-                                context.SaveChanges();
-
-                                MessageBox.Show("Книга успішно оновлена у базі!", "Книгу оновлено",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            MessageBox.Show("Студент успішно оновлений у базі!", "Студента оновлено",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -172,8 +129,8 @@ namespace Library_bfk.User_Controls
             }
             else
             {
-                MessageBox.Show("Спочатку оберіть книгу для редагування",
-                   "Оберіть книгу", MessageBoxButtons.OK,
+                MessageBox.Show("Спочатку оберіть студента для редагування",
+                   "Оберіть студента", MessageBoxButtons.OK,
                    MessageBoxIcon.Warning);
             }
         }
@@ -182,19 +139,18 @@ namespace Library_bfk.User_Controls
         {
             if (id != 0)
             {
-                DialogResult question = MessageBox.Show("Ви дійсно бажаєте видалити цю" +
-                        "книгу?", "Видалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult question = MessageBox.Show("Ви дійсно бажаєте видалити цього " +
+                        "студента?", "Видалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (question == DialogResult.Yes)
                 {
                     using (library_bfkEntities context = new library_bfkEntities())
                     {
-
-                        book b = context.books.Find(id);
-                        context.books.Remove(b);
+                        stud s = context.studs.Find(id);
+                        context.studs.Remove(s);
                         context.SaveChanges();
                     }
-                    MessageBox.Show("Книгу було успішно видалено",
-                  "Книгу видалено", MessageBoxButtons.OK,
+                    MessageBox.Show("Студента було успішно видалено",
+                  "Студента видалено", MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
                     ClearData();
                     LoadData();
@@ -202,15 +158,15 @@ namespace Library_bfk.User_Controls
             }
             else
             {
-                MessageBox.Show("Спочатку оберіть книгу для видалення",
-                   "Оберіть книгу", MessageBoxButtons.OK,
+                MessageBox.Show("Спочатку оберіть студента для видалення",
+                   "Оберіть студента", MessageBoxButtons.OK,
                    MessageBoxIcon.Warning);
             }
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-            using (Search f = new Search())
+            using (SearchStudent f = new SearchStudent())
             {
                 DialogResult result = f.ShowDialog(this);
 
@@ -220,12 +176,12 @@ namespace Library_bfk.User_Controls
                     {
                         if (f.querySearch != "")
                         {
-                            string querySearch = "SELECT * FROM book WHERE " + f.querySearch.Remove(f.querySearch.Length - 4, 4);
-                            var books = context.books.SqlQuery(querySearch).ToList();
+                            string querySearch = "SELECT * FROM stud WHERE " + f.querySearch.Remove(f.querySearch.Length - 4, 4);
+                            var students = context.studs.SqlQuery(querySearch).ToList();
 
-                            if (books.Count > 0)
+                            if (students.Count > 0)
                             {
-                                studentsGrid.DataSource = books;
+                                studentsGrid.DataSource = students;
                             }
                             else
                             {
@@ -253,7 +209,7 @@ namespace Library_bfk.User_Controls
                 studSurname.Text = studentsGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
                 studSpeciality.Text = studentsGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
 
-                using(library_bfkEntities context = new library_bfkEntities())
+                using (library_bfkEntities context = new library_bfkEntities())
                 {
                     long stud_id = Convert.ToInt64(studentsGrid.Rows[e.RowIndex].Cells[4].Value);
                     var stud_groupe = context.groups.Where(x => x.id == stud_id).FirstOrDefault();
@@ -274,9 +230,52 @@ namespace Library_bfk.User_Controls
                     studUnit.Text = stud_unit.name;
                 }
 
+                using (library_bfkEntities context = new library_bfkEntities())
+                {
+                    var bookCount = context.books_students.Where(x => x.student_id == id).ToList();
+                    if (bookCount.Count > 0)
+                    {
+                        studBooks.Text = bookCount.Count.ToString();
+                    }
+                    else
+                    {
+                        studBooks.Text = "Студент ще не брав книг у бібліотеці";
+                    }
+                }
+
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            if (id != 0)
+            {
+                using (library_bfkEntities context = new library_bfkEntities())
+                {
+                    var bookCount = context.books_students.Where(x => x.student_id == id).ToList();
+                    if (bookCount.Count > 0)
+                    {
+                        using (ViewBookStudent f = new ViewBookStudent(id))
+                        {
+                            DialogResult result = f.ShowDialog(this);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Студент не має книг",
+                   "Книги відсутні", MessageBoxButtons.OK,
+                   MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Спочатку оберіть студента для перегляду його книг",
+                   "Оберіть студента", MessageBoxButtons.OK,
+                   MessageBoxIcon.Warning);
             }
         }
     }

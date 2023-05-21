@@ -19,17 +19,14 @@
           <Property Name="inventory_number" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="status" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "library_bfk.dbo.books_students" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="books_students">
           <Key>
-            <PropertyRef Name="book_id" />
-            <PropertyRef Name="student_id" />
-            <PropertyRef Name="date_issue" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="book_id" Type="bigint" Nullable="false" />
           <Property Name="student_id" Type="bigint" Nullable="false" />
           <Property Name="date_issue" Type="date" Nullable="false" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="faculty">
           <Key>
@@ -190,18 +187,12 @@
         </Association>
         <EntityContainer Name="Хранилище library_bfkModelContainer">
           <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="books_students" EntityType="Self.books_students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="faculty" EntityType="Self.faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="group" EntityType="Self.group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="stud" EntityType="Self.stud" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="books_students" EntityType="Self.books_students" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [books_students].[book_id] AS [book_id], 
-    [books_students].[student_id] AS [student_id], 
-    [books_students].[date_issue] AS [date_issue]
-    FROM [dbo].[books_students] AS [books_students]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_books_students_book" Association="Self.FK_books_students_book">
             <End Role="book" EntitySet="book" />
             <End Role="books_students" EntitySet="books_students" />
@@ -255,6 +246,17 @@
           <Property Name="status" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="books_students" Relationship="Self.FK_books_students_book" FromRole="book" ToRole="books_students" />
         </EntityType>
+        <EntityType Name="books_students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="book_id" Type="Int64" Nullable="false" />
+          <Property Name="student_id" Type="Int64" Nullable="false" />
+          <Property Name="date_issue" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="book" Relationship="Self.FK_books_students_book" FromRole="books_students" ToRole="book" />
+          <NavigationProperty Name="stud" Relationship="Self.FK_books_students_stud" FromRole="books_students" ToRole="stud" />
+        </EntityType>
         <EntityType Name="faculty">
           <Key>
             <PropertyRef Name="id" />
@@ -294,9 +296,9 @@
           <Property Name="group_id" Type="Int64" Nullable="false" />
           <Property Name="faculty_id" Type="Int64" Nullable="false" />
           <Property Name="unit_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="books_students" Relationship="Self.FK_books_students_stud" FromRole="stud" ToRole="books_students" />
           <NavigationProperty Name="faculty" Relationship="Self.FK_stud_faculty" FromRole="stud" ToRole="faculty" />
           <NavigationProperty Name="group" Relationship="Self.FK_stud_group" FromRole="stud" ToRole="group" />
-          <NavigationProperty Name="books_students" Relationship="Self.FK_books_students_stud" FromRole="stud" ToRole="books_students" />
           <NavigationProperty Name="unit" Relationship="Self.FK_stud_unit" FromRole="stud" ToRole="unit" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -323,18 +325,6 @@
           <NavigationProperty Name="groups" Relationship="Self.FK_group_unit" FromRole="unit" ToRole="group" />
           <NavigationProperty Name="studs" Relationship="Self.FK_stud_unit" FromRole="unit" ToRole="stud" />
         </EntityType>
-        <EntityType Name="books_students">
-          <Key>
-            <PropertyRef Name="book_id" />
-            <PropertyRef Name="student_id" />
-            <PropertyRef Name="date_issue" />
-          </Key>
-          <Property Name="book_id" Type="Int64" Nullable="false" />
-          <Property Name="student_id" Type="Int64" Nullable="false" />
-          <Property Name="date_issue" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="book" Relationship="Self.FK_books_students_book" FromRole="books_students" ToRole="book" />
-          <NavigationProperty Name="stud" Relationship="Self.FK_books_students_stud" FromRole="books_students" ToRole="stud" />
-        </EntityType>
         <Association Name="FK_books_students_book">
           <End Role="book" Type="Self.book" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -346,6 +336,18 @@
             </Principal>
             <Dependent Role="books_students">
               <PropertyRef Name="book_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_books_students_stud">
+          <End Role="stud" Type="Self.stud" Multiplicity="1" />
+          <End Role="books_students" Type="Self.books_students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stud">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="books_students">
+              <PropertyRef Name="student_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -413,18 +415,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_books_students_stud">
-          <End Role="stud" Type="Self.stud" Multiplicity="1" />
-          <End Role="books_students" Type="Self.books_students" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="stud">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="books_students">
-              <PropertyRef Name="student_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_stud_unit">
           <End Role="unit" Type="Self.unit" Multiplicity="1" />
           <End Role="stud" Type="Self.stud" Multiplicity="*" />
@@ -439,14 +429,18 @@
         </Association>
         <EntityContainer Name="library_bfkEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="books" EntityType="Self.book" />
+          <EntitySet Name="books_students" EntityType="Self.books_students" />
           <EntitySet Name="faculties" EntityType="Self.faculty" />
           <EntitySet Name="groups" EntityType="Self.group" />
           <EntitySet Name="studs" EntityType="Self.stud" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="units" EntityType="Self.unit" />
-          <EntitySet Name="books_students" EntityType="Self.books_students" />
           <AssociationSet Name="FK_books_students_book" Association="Self.FK_books_students_book">
             <End Role="book" EntitySet="books" />
+            <End Role="books_students" EntitySet="books_students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_books_students_stud" Association="Self.FK_books_students_stud">
+            <End Role="stud" EntitySet="studs" />
             <End Role="books_students" EntitySet="books_students" />
           </AssociationSet>
           <AssociationSet Name="FK_group_faculty" Association="Self.FK_group_faculty">
@@ -468,10 +462,6 @@
           <AssociationSet Name="FK_stud_group" Association="Self.FK_stud_group">
             <End Role="group" EntitySet="groups" />
             <End Role="stud" EntitySet="studs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_books_students_stud" Association="Self.FK_books_students_stud">
-            <End Role="stud" EntitySet="studs" />
-            <End Role="books_students" EntitySet="books_students" />
           </AssociationSet>
           <AssociationSet Name="FK_stud_unit" Association="Self.FK_stud_unit">
             <End Role="unit" EntitySet="units" />
@@ -496,6 +486,16 @@
                 <ScalarProperty Name="isbn" ColumnName="isbn" />
                 <ScalarProperty Name="inventory_number" ColumnName="inventory_number" />
                 <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books_students">
+            <EntityTypeMapping TypeName="library_bfkModel.books_students">
+              <MappingFragment StoreEntitySet="books_students">
+                <ScalarProperty Name="book_id" ColumnName="book_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="date_issue" ColumnName="date_issue" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -556,15 +556,6 @@
                 <ScalarProperty Name="head_surname" ColumnName="head_surname" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="id_faculty" ColumnName="id_faculty" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="books_students">
-            <EntityTypeMapping TypeName="library_bfkModel.books_students">
-              <MappingFragment StoreEntitySet="books_students">
-                <ScalarProperty Name="book_id" ColumnName="book_id" />
-                <ScalarProperty Name="student_id" ColumnName="student_id" />
-                <ScalarProperty Name="date_issue" ColumnName="date_issue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

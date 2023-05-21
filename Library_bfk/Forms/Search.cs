@@ -28,19 +28,19 @@ namespace Library_bfk.Forms
             try
             {
                 if(guna2TextBox1.Text != "")
-                    querySearch += "name='" + guna2TextBox1.Text + "' AND ";
+                    querySearch += "name='" + guna2TextBox1.Text.Replace("'", "''") + "' AND ";
                 if(guna2TextBox2.Text != "")
-                    querySearch += "publisher='" + guna2TextBox2.Text + "' AND ";
+                    querySearch += "publisher='" + guna2TextBox2.Text.Replace("'", "''") + "' AND ";
                 if(guna2TextBox3.Text != "")
                     querySearch += "year=" + Convert.ToInt16(guna2TextBox3.Text) + " AND ";
                 if(guna2TextBox4.Text != "")
-                    querySearch += "author='" + guna2TextBox4.Text + "' AND ";
+                    querySearch += "author='" + guna2TextBox4.Text.Replace("'", "''") + "' AND ";
                 if (guna2TextBox6.Text != "")
-                    querySearch += "isbn='" + guna2TextBox6.Text + "' AND ";
+                    querySearch += "isbn='" + guna2TextBox6.Text.Replace("'", "''") + "' AND ";
                 if (guna2TextBox7.Text != "")
-                    querySearch += "inventory_number='" + guna2TextBox7.Text + "' AND ";
+                    querySearch += "inventory_number='" + guna2TextBox7.Text.Replace("'", "''") + "' AND ";
                 if (guna2ComboBox1.SelectedIndex == 0 || guna2ComboBox1.SelectedIndex == 1)
-                    querySearch += "status='" + guna2ComboBox1.Text + "' AND ";
+                    querySearch += "status='" + guna2ComboBox1.Text.Replace("'", "''") + "' AND ";
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

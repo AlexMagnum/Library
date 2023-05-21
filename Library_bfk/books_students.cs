@@ -17,6 +17,7 @@ namespace Library_bfk
         public long book_id { get; set; }
         public long student_id { get; set; }
         public System.DateTime date_issue { get; set; }
+        public long id { get; set; }
     
         public virtual book book { get; set; }
         public virtual stud stud { get; set; }

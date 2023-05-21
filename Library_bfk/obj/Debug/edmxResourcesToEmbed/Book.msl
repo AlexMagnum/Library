@@ -16,6 +16,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="books_students">
+      <EntityTypeMapping TypeName="library_bfkModel.books_students">
+        <MappingFragment StoreEntitySet="books_students">
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="date_issue" ColumnName="date_issue" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="faculties">
       <EntityTypeMapping TypeName="library_bfkModel.faculty">
         <MappingFragment StoreEntitySet="faculty">
@@ -73,15 +83,6 @@
           <ScalarProperty Name="head_surname" ColumnName="head_surname" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="id_faculty" ColumnName="id_faculty" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="books_students">
-      <EntityTypeMapping TypeName="library_bfkModel.books_students">
-        <MappingFragment StoreEntitySet="books_students">
-          <ScalarProperty Name="book_id" ColumnName="book_id" />
-          <ScalarProperty Name="student_id" ColumnName="student_id" />
-          <ScalarProperty Name="date_issue" ColumnName="date_issue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

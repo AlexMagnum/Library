@@ -21,21 +21,9 @@ namespace Library_bfk
             AddUserControl(uc);
         }
 
-        private void MoveImageBox(object sender)
-        {
-            Guna2Button b = (Guna2Button)sender;
-            pictureBox2.Location = new Point(b.Location.X + 175, b.Location.Y + 1);
-            pictureBox2.SendToBack();
-        }
-
         private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void guna2Button1_CheckedChanged(object sender, EventArgs e)
-        {
-            MoveImageBox(sender); 
         }
 
         private void AddUserControl(Control c)

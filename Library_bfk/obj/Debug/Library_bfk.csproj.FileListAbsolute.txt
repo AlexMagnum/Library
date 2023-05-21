@@ -44,3 +44,7 @@ D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.pdb
 D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.Forms.AddUnity.resources
 D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.Forms.AddGroupe.resources
 D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.User_Controls.Students.resources
+D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.Forms.AddStudent.resources
+D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.Forms.SearchStudent.resources
+D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.Forms.GiveBook.resources
+D:\Git Source\Library\Library_bfk\obj\Debug\Library_bfk.Forms.ViewBookStudent.resources

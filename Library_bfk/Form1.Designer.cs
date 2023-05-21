@@ -35,7 +35,6 @@ namespace Library_bfk
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
@@ -43,13 +42,11 @@ namespace Library_bfk
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.guna2Button1);
             this.panel1.Controls.Add(this.guna2Button4);
             this.panel1.Controls.Add(this.guna2Button2);
@@ -85,16 +82,6 @@ namespace Library_bfk
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Library_bfk.Properties.Resources.separator;
-            this.pictureBox2.Location = new System.Drawing.Point(199, 254);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 48);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
             // guna2Button1
             // 
             this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
@@ -114,12 +101,11 @@ namespace Library_bfk
             this.guna2Button1.ImageSize = new System.Drawing.Size(46, 32);
             this.guna2Button1.Location = new System.Drawing.Point(25, 253);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button1.Size = new System.Drawing.Size(266, 50);
             this.guna2Button1.TabIndex = 2;
             this.guna2Button1.Text = "   Статистика";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.UseTransparentBackground = true;
-            this.guna2Button1.CheckedChanged += new System.EventHandler(this.guna2Button1_CheckedChanged);
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Button4
@@ -140,12 +126,11 @@ namespace Library_bfk
             this.guna2Button4.ImageSize = new System.Drawing.Size(46, 32);
             this.guna2Button4.Location = new System.Drawing.Point(25, 421);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button4.Size = new System.Drawing.Size(266, 50);
             this.guna2Button4.TabIndex = 3;
             this.guna2Button4.Text = "   Підрозділи";
             this.guna2Button4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button4.UseTransparentBackground = true;
-            this.guna2Button4.CheckedChanged += new System.EventHandler(this.guna2Button1_CheckedChanged);
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Button2
@@ -166,12 +151,11 @@ namespace Library_bfk
             this.guna2Button2.ImageSize = new System.Drawing.Size(46, 32);
             this.guna2Button2.Location = new System.Drawing.Point(25, 309);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button2.Size = new System.Drawing.Size(250, 50);
             this.guna2Button2.TabIndex = 2;
             this.guna2Button2.Text = "   Книги";
             this.guna2Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button2.UseTransparentBackground = true;
-            this.guna2Button2.CheckedChanged += new System.EventHandler(this.guna2Button1_CheckedChanged);
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // exit
@@ -208,12 +192,11 @@ namespace Library_bfk
             this.guna2Button3.ImageSize = new System.Drawing.Size(46, 28);
             this.guna2Button3.Location = new System.Drawing.Point(25, 365);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(200, 50);
+            this.guna2Button3.Size = new System.Drawing.Size(250, 50);
             this.guna2Button3.TabIndex = 3;
             this.guna2Button3.Text = "   Студенти";
             this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button3.UseTransparentBackground = true;
-            this.guna2Button3.CheckedChanged += new System.EventHandler(this.guna2Button1_CheckedChanged);
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // Library
@@ -232,7 +215,6 @@ namespace Library_bfk
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,7 +227,6 @@ namespace Library_bfk
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;

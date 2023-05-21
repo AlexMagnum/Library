@@ -26,11 +26,11 @@ namespace Library_bfk
         }
     
         public virtual DbSet<book> books { get; set; }
+        public virtual DbSet<books_students> books_students { get; set; }
         public virtual DbSet<faculty> faculties { get; set; }
         public virtual DbSet<group> groups { get; set; }
         public virtual DbSet<stud> studs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<unit> units { get; set; }
-        public virtual DbSet<books_students> books_students { get; set; }
     }
 }

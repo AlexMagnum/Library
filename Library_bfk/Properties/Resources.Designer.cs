@@ -113,6 +113,26 @@ namespace Library_bfk.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap book_in {
+            get {
+                object obj = ResourceManager.GetObject("book-in", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_out {
+            get {
+                object obj = ResourceManager.GetObject("book-out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap books_stack_of_three {
             get {
                 object obj = ResourceManager.GetObject("books-stack-of-three", resourceCulture);
@@ -136,6 +156,16 @@ namespace Library_bfk.Properties {
         internal static System.Drawing.Bitmap bookview {
             get {
                 object obj = ResourceManager.GetObject("bookview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

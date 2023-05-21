@@ -30,12 +30,19 @@ namespace Library_bfk.User_Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.studentsGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.studBooks = new System.Windows.Forms.Label();
+            this.studGroupe = new System.Windows.Forms.Label();
+            this.studSpeciality = new System.Windows.Forms.Label();
+            this.studUnit = new System.Windows.Forms.Label();
+            this.studFaculty = new System.Windows.Forms.Label();
+            this.studSurname = new System.Windows.Forms.Label();
+            this.studName = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,20 +51,13 @@ namespace Library_bfk.User_Controls
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.studName = new System.Windows.Forms.Label();
-            this.studSurname = new System.Windows.Forms.Label();
-            this.studFaculty = new System.Windows.Forms.Label();
-            this.studUnit = new System.Windows.Forms.Label();
-            this.studSpeciality = new System.Windows.Forms.Label();
-            this.studGroupe = new System.Windows.Forms.Label();
-            this.studBooks = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.studentsGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,40 +69,40 @@ namespace Library_bfk.User_Controls
             this.studentsGrid.AllowUserToDeleteRows = false;
             this.studentsGrid.AllowUserToResizeColumns = false;
             this.studentsGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.studentsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.studentsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.studentsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.studentsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.studentsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.studentsGrid.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(206)))), ((int)(((byte)(234)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.studentsGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(206)))), ((int)(((byte)(234)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.studentsGrid.DefaultCellStyle = dataGridViewCellStyle7;
             this.studentsGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.studentsGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(206)))), ((int)(((byte)(234)))));
             this.studentsGrid.Location = new System.Drawing.Point(0, 0);
             this.studentsGrid.MultiSelect = false;
             this.studentsGrid.Name = "studentsGrid";
             this.studentsGrid.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.studentsGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(222)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.studentsGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.studentsGrid.RowHeadersVisible = false;
             this.studentsGrid.RowHeadersWidth = 30;
             this.studentsGrid.RowTemplate.Height = 30;
@@ -152,6 +152,69 @@ namespace Library_bfk.User_Controls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(790, 281);
             this.panel1.TabIndex = 1;
+            // 
+            // studBooks
+            // 
+            this.studBooks.AutoSize = true;
+            this.studBooks.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studBooks.Location = new System.Drawing.Point(236, 236);
+            this.studBooks.Name = "studBooks";
+            this.studBooks.Size = new System.Drawing.Size(0, 18);
+            this.studBooks.TabIndex = 8;
+            // 
+            // studGroupe
+            // 
+            this.studGroupe.AutoSize = true;
+            this.studGroupe.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studGroupe.Location = new System.Drawing.Point(236, 201);
+            this.studGroupe.Name = "studGroupe";
+            this.studGroupe.Size = new System.Drawing.Size(0, 18);
+            this.studGroupe.TabIndex = 7;
+            // 
+            // studSpeciality
+            // 
+            this.studSpeciality.AutoSize = true;
+            this.studSpeciality.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studSpeciality.Location = new System.Drawing.Point(236, 166);
+            this.studSpeciality.Name = "studSpeciality";
+            this.studSpeciality.Size = new System.Drawing.Size(0, 18);
+            this.studSpeciality.TabIndex = 6;
+            // 
+            // studUnit
+            // 
+            this.studUnit.AutoSize = true;
+            this.studUnit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studUnit.Location = new System.Drawing.Point(236, 131);
+            this.studUnit.Name = "studUnit";
+            this.studUnit.Size = new System.Drawing.Size(0, 18);
+            this.studUnit.TabIndex = 5;
+            // 
+            // studFaculty
+            // 
+            this.studFaculty.AutoSize = true;
+            this.studFaculty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studFaculty.Location = new System.Drawing.Point(236, 96);
+            this.studFaculty.Name = "studFaculty";
+            this.studFaculty.Size = new System.Drawing.Size(0, 18);
+            this.studFaculty.TabIndex = 4;
+            // 
+            // studSurname
+            // 
+            this.studSurname.AutoSize = true;
+            this.studSurname.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studSurname.Location = new System.Drawing.Point(236, 61);
+            this.studSurname.Name = "studSurname";
+            this.studSurname.Size = new System.Drawing.Size(0, 18);
+            this.studSurname.TabIndex = 3;
+            // 
+            // studName
+            // 
+            this.studName.AutoSize = true;
+            this.studName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studName.Location = new System.Drawing.Point(236, 26);
+            this.studName.Name = "studName";
+            this.studName.Size = new System.Drawing.Size(0, 18);
+            this.studName.TabIndex = 2;
             // 
             // label7
             // 
@@ -237,6 +300,11 @@ namespace Library_bfk.User_Controls
             this.panel2.Size = new System.Drawing.Size(230, 281);
             this.panel2.TabIndex = 2;
             // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 30;
+            this.guna2Elipse1.TargetControl = this;
+            // 
             // guna2Button6
             // 
             this.guna2Button6.BorderRadius = 10;
@@ -259,6 +327,7 @@ namespace Library_bfk.User_Controls
             this.guna2Button6.Text = " Перегляд книг";
             this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button6.TextOffset = new System.Drawing.Point(10, 0);
+            this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
             // 
             // guna2Button5
             // 
@@ -379,74 +448,6 @@ namespace Library_bfk.User_Controls
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 30;
-            this.guna2Elipse1.TargetControl = this;
-            // 
-            // studName
-            // 
-            this.studName.AutoSize = true;
-            this.studName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studName.Location = new System.Drawing.Point(236, 26);
-            this.studName.Name = "studName";
-            this.studName.Size = new System.Drawing.Size(0, 19);
-            this.studName.TabIndex = 2;
-            // 
-            // studSurname
-            // 
-            this.studSurname.AutoSize = true;
-            this.studSurname.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studSurname.Location = new System.Drawing.Point(236, 61);
-            this.studSurname.Name = "studSurname";
-            this.studSurname.Size = new System.Drawing.Size(0, 19);
-            this.studSurname.TabIndex = 3;
-            // 
-            // studFaculty
-            // 
-            this.studFaculty.AutoSize = true;
-            this.studFaculty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studFaculty.Location = new System.Drawing.Point(236, 96);
-            this.studFaculty.Name = "studFaculty";
-            this.studFaculty.Size = new System.Drawing.Size(0, 19);
-            this.studFaculty.TabIndex = 4;
-            // 
-            // studUnit
-            // 
-            this.studUnit.AutoSize = true;
-            this.studUnit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studUnit.Location = new System.Drawing.Point(236, 131);
-            this.studUnit.Name = "studUnit";
-            this.studUnit.Size = new System.Drawing.Size(0, 19);
-            this.studUnit.TabIndex = 5;
-            // 
-            // studSpeciality
-            // 
-            this.studSpeciality.AutoSize = true;
-            this.studSpeciality.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studSpeciality.Location = new System.Drawing.Point(236, 166);
-            this.studSpeciality.Name = "studSpeciality";
-            this.studSpeciality.Size = new System.Drawing.Size(0, 19);
-            this.studSpeciality.TabIndex = 6;
-            // 
-            // studGroupe
-            // 
-            this.studGroupe.AutoSize = true;
-            this.studGroupe.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studGroupe.Location = new System.Drawing.Point(236, 201);
-            this.studGroupe.Name = "studGroupe";
-            this.studGroupe.Size = new System.Drawing.Size(0, 19);
-            this.studGroupe.TabIndex = 7;
-            // 
-            // studBooks
-            // 
-            this.studBooks.AutoSize = true;
-            this.studBooks.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studBooks.Location = new System.Drawing.Point(236, 236);
-            this.studBooks.Name = "studBooks";
-            this.studBooks.Size = new System.Drawing.Size(0, 19);
-            this.studBooks.TabIndex = 8;
             // 
             // Students
             // 

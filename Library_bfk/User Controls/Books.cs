@@ -82,8 +82,16 @@ namespace Library_bfk.User_Controls
                 }
                 else
                 {
-                    bookStatus.Text = booksGrid.Rows[e.RowIndex].Cells[8].Value.ToString();
-                    bookStatus.ForeColor = Color.Red;
+                    using (library_bfkEntities context = new library_bfkEntities())
+                    {
+                        var studentId = context.books_students.Where(x => x.book_id == id).FirstOrDefault();
+                        var student = context.studs.Where(x => x.id == studentId.student_id).FirstOrDefault();
+                        var group = context.groups.Where(x => x.id == student.group_id).FirstOrDefault();
+                        bookStatus.Text = booksGrid.Rows[e.RowIndex].Cells[8].Value.ToString() + " студенту "
+                            + student.surname + " " + student.name + " із групи " + group.name + " Дата видачі: "
+                            + studentId.date_issue.ToString("d");
+                        bookStatus.ForeColor = Color.Red;
+                    }
                 }
             }
             catch (Exception ex)
@@ -214,7 +222,7 @@ namespace Library_bfk.User_Controls
             if (id != 0)
             {
                 DialogResult question = MessageBox.Show("Ви дійсно бажаєте видалити цю" +
-                        "книгу?", "Видалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        " книгу?", "Видалити", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (question == DialogResult.Yes)
                 {
                     using (library_bfkEntities context = new library_bfkEntities())
@@ -271,6 +279,29 @@ namespace Library_bfk.User_Controls
                         }
                     }
                 }
+            }
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            if (id != 0)
+            {
+                using (GiveBook f = new GiveBook(id))
+                {
+                    DialogResult result = f.ShowDialog(this);
+
+                    if (result == DialogResult.OK)
+                    {
+                        ClearData();
+                        LoadData();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Спочатку оберіть книгу із списка",
+                  "Оберіть книгу", MessageBoxButtons.OK,
+                  MessageBoxIcon.Warning);
             }
         }
     }

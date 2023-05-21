@@ -28,10 +28,10 @@ namespace Library_bfk
         public long faculty_id { get; set; }
         public long unit_id { get; set; }
     
-        public virtual faculty faculty { get; set; }
-        public virtual group group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<books_students> books_students { get; set; }
+        public virtual faculty faculty { get; set; }
+        public virtual group group { get; set; }
         public virtual unit unit { get; set; }
     }
 }

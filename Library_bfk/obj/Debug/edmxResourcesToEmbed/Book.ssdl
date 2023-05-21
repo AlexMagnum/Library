@@ -14,17 +14,14 @@
     <Property Name="inventory_number" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="status" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
-  <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "library_bfk.dbo.books_students" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <EntityType Name="books_students">
     <Key>
-      <PropertyRef Name="book_id" />
-      <PropertyRef Name="student_id" />
-      <PropertyRef Name="date_issue" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="book_id" Type="bigint" Nullable="false" />
     <Property Name="student_id" Type="bigint" Nullable="false" />
     <Property Name="date_issue" Type="date" Nullable="false" />
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="faculty">
     <Key>
@@ -185,18 +182,12 @@
   </Association>
   <EntityContainer Name="Хранилище library_bfkModelContainer">
     <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="books_students" EntityType="Self.books_students" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="faculty" EntityType="Self.faculty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="group" EntityType="Self.group" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="stud" EntityType="Self.stud" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="books_students" EntityType="Self.books_students" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [books_students].[book_id] AS [book_id], 
-    [books_students].[student_id] AS [student_id], 
-    [books_students].[date_issue] AS [date_issue]
-    FROM [dbo].[books_students] AS [books_students]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_books_students_book" Association="Self.FK_books_students_book">
       <End Role="book" EntitySet="book" />
       <End Role="books_students" EntitySet="books_students" />

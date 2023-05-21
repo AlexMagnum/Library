@@ -15,6 +15,17 @@
     <Property Name="status" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="books_students" Relationship="Self.FK_books_students_book" FromRole="book" ToRole="books_students" />
   </EntityType>
+  <EntityType Name="books_students">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="book_id" Type="Int64" Nullable="false" />
+    <Property Name="student_id" Type="Int64" Nullable="false" />
+    <Property Name="date_issue" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="book" Relationship="Self.FK_books_students_book" FromRole="books_students" ToRole="book" />
+    <NavigationProperty Name="stud" Relationship="Self.FK_books_students_stud" FromRole="books_students" ToRole="stud" />
+  </EntityType>
   <EntityType Name="faculty">
     <Key>
       <PropertyRef Name="id" />
@@ -54,9 +65,9 @@
     <Property Name="group_id" Type="Int64" Nullable="false" />
     <Property Name="faculty_id" Type="Int64" Nullable="false" />
     <Property Name="unit_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="books_students" Relationship="Self.FK_books_students_stud" FromRole="stud" ToRole="books_students" />
     <NavigationProperty Name="faculty" Relationship="Self.FK_stud_faculty" FromRole="stud" ToRole="faculty" />
     <NavigationProperty Name="group" Relationship="Self.FK_stud_group" FromRole="stud" ToRole="group" />
-    <NavigationProperty Name="books_students" Relationship="Self.FK_books_students_stud" FromRole="stud" ToRole="books_students" />
     <NavigationProperty Name="unit" Relationship="Self.FK_stud_unit" FromRole="stud" ToRole="unit" />
   </EntityType>
   <EntityType Name="sysdiagram">
@@ -83,18 +94,6 @@
     <NavigationProperty Name="groups" Relationship="Self.FK_group_unit" FromRole="unit" ToRole="group" />
     <NavigationProperty Name="studs" Relationship="Self.FK_stud_unit" FromRole="unit" ToRole="stud" />
   </EntityType>
-  <EntityType Name="books_students">
-    <Key>
-      <PropertyRef Name="book_id" />
-      <PropertyRef Name="student_id" />
-      <PropertyRef Name="date_issue" />
-    </Key>
-    <Property Name="book_id" Type="Int64" Nullable="false" />
-    <Property Name="student_id" Type="Int64" Nullable="false" />
-    <Property Name="date_issue" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="book" Relationship="Self.FK_books_students_book" FromRole="books_students" ToRole="book" />
-    <NavigationProperty Name="stud" Relationship="Self.FK_books_students_stud" FromRole="books_students" ToRole="stud" />
-  </EntityType>
   <Association Name="FK_books_students_book">
     <End Role="book" Type="Self.book" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -106,6 +105,18 @@
       </Principal>
       <Dependent Role="books_students">
         <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_books_students_stud">
+    <End Role="stud" Type="Self.stud" Multiplicity="1" />
+    <End Role="books_students" Type="Self.books_students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="books_students">
+        <PropertyRef Name="student_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -173,18 +184,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_books_students_stud">
-    <End Role="stud" Type="Self.stud" Multiplicity="1" />
-    <End Role="books_students" Type="Self.books_students" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="stud">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="books_students">
-        <PropertyRef Name="student_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_stud_unit">
     <End Role="unit" Type="Self.unit" Multiplicity="1" />
     <End Role="stud" Type="Self.stud" Multiplicity="*" />
@@ -199,14 +198,18 @@
   </Association>
   <EntityContainer Name="library_bfkEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="books" EntityType="Self.book" />
+    <EntitySet Name="books_students" EntityType="Self.books_students" />
     <EntitySet Name="faculties" EntityType="Self.faculty" />
     <EntitySet Name="groups" EntityType="Self.group" />
     <EntitySet Name="studs" EntityType="Self.stud" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="units" EntityType="Self.unit" />
-    <EntitySet Name="books_students" EntityType="Self.books_students" />
     <AssociationSet Name="FK_books_students_book" Association="Self.FK_books_students_book">
       <End Role="book" EntitySet="books" />
+      <End Role="books_students" EntitySet="books_students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_books_students_stud" Association="Self.FK_books_students_stud">
+      <End Role="stud" EntitySet="studs" />
       <End Role="books_students" EntitySet="books_students" />
     </AssociationSet>
     <AssociationSet Name="FK_group_faculty" Association="Self.FK_group_faculty">
@@ -228,10 +231,6 @@
     <AssociationSet Name="FK_stud_group" Association="Self.FK_stud_group">
       <End Role="group" EntitySet="groups" />
       <End Role="stud" EntitySet="studs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_books_students_stud" Association="Self.FK_books_students_stud">
-      <End Role="stud" EntitySet="studs" />
-      <End Role="books_students" EntitySet="books_students" />
     </AssociationSet>
     <AssociationSet Name="FK_stud_unit" Association="Self.FK_stud_unit">
       <End Role="unit" EntitySet="units" />
