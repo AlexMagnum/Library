@@ -65,35 +65,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Book.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Book.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="book.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookModel.Context.cs">
+    <Compile Include="Book.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookModel.Context.tt</DependentUpon>
+      <DependentUpon>Book.edmx</DependentUpon>
     </Compile>
-    <Compile Include="BookModel.cs">
+    <Compile Include="Book1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookModel.tt</DependentUpon>
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="book_student.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+    <Compile Include="books_students.cs">
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
     <Compile Include="faculty.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddGroupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddGroupe.Designer.cs">
+      <DependentUpon>AddGroupe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddUnity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddUnity.Designer.cs">
+      <DependentUpon>AddUnity.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddFaculty.cs">
       <SubType>Form</SubType>
@@ -114,18 +126,24 @@
       <DependentUpon>AddBook.cs</DependentUpon>
     </Compile>
     <Compile Include="group.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="student.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+    <Compile Include="stud.cs">
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+      <DependentUpon>Book.tt</DependentUpon>
     </Compile>
     <Compile Include="unit.cs">
-      <DependentUpon>BookModel.tt</DependentUpon>
+      <DependentUpon>Book.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\Students.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\Students.Designer.cs">
+      <DependentUpon>Students.cs</DependentUpon>
     </Compile>
     <Compile Include="User Controls\Books.cs">
       <SubType>UserControl</SubType>
@@ -148,6 +166,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddGroupe.resx">
+      <DependentUpon>AddGroupe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddUnity.resx">
+      <DependentUpon>AddUnity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddFaculty.resx">
       <DependentUpon>AddFaculty.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +186,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\Students.resx">
+      <DependentUpon>Students.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Controls\Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,12 +198,12 @@
     <EmbeddedResource Include="User Controls\Departments.resx">
       <DependentUpon>Departments.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="BookModel.edmx">
+    <EntityDeploy Include="Book.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Book.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BookModel.edmx.diagram">
-      <DependentUpon>BookModel.edmx</DependentUpon>
+    <None Include="Book.edmx.diagram">
+      <DependentUpon>Book.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -231,16 +258,8 @@
     <None Include="Img\separator.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BookModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BookModel.Context.cs</LastGenOutput>
-      <DependentUpon>BookModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="BookModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookModel.edmx</DependentUpon>
-      <LastGenOutput>BookModel.cs</LastGenOutput>
-    </Content>
+    <None Include="Img\bookview.png" />
+    <None Include="Img\book.png" />
     <None Include="Img\search.png" />
     <None Include="Img\rotate.png" />
     <None Include="Img\trash.png" />
@@ -251,7 +270,18 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Book.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Book.edmx</DependentUpon>
+      <LastGenOutput>Book.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Book.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Book.edmx</DependentUpon>
+      <LastGenOutput>Book1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

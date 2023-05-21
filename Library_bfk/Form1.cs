@@ -62,5 +62,11 @@ namespace Library_bfk
             Departments uc = new Departments();
             AddUserControl(uc);
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            Students uc = new Students();
+            AddUserControl(uc);
+        }
     }
 }

@@ -18,7 +18,6 @@ namespace Library_bfk
         public library_bfkEntities()
             : base("name=library_bfkEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -29,9 +28,9 @@ namespace Library_bfk
         public virtual DbSet<book> books { get; set; }
         public virtual DbSet<faculty> faculties { get; set; }
         public virtual DbSet<group> groups { get; set; }
-        public virtual DbSet<student> students { get; set; }
+        public virtual DbSet<stud> studs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<unit> units { get; set; }
-        public virtual DbSet<book_student> book_student { get; set; }
+        public virtual DbSet<books_students> books_students { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Library_bfk
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public group()
         {
-            this.students = new HashSet<student>();
+            this.studs = new HashSet<stud>();
         }
     
         public long id { get; set; }
@@ -31,6 +31,6 @@ namespace Library_bfk
         public virtual faculty faculty { get; set; }
         public virtual unit unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<student> students { get; set; }
+        public virtual ICollection<stud> studs { get; set; }
     }
 }

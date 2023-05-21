@@ -214,6 +214,7 @@ namespace Library_bfk
             this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button3.UseTransparentBackground = true;
             this.guna2Button3.CheckedChanged += new System.EventHandler(this.guna2Button1_CheckedChanged);
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // Library
             // 

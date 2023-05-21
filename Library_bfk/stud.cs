@@ -12,25 +12,26 @@ namespace Library_bfk
     using System;
     using System.Collections.Generic;
     
-    public partial class student
+    public partial class stud
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public student()
+        public stud()
         {
-            this.book_student = new HashSet<book_student>();
+            this.books_students = new HashSet<books_students>();
         }
     
         public long id { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
+        public string specialty { get; set; }
         public long group_id { get; set; }
-        public long unit_id { get; set; }
         public long faculty_id { get; set; }
+        public long unit_id { get; set; }
     
         public virtual faculty faculty { get; set; }
         public virtual group group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<book_student> book_student { get; set; }
+        public virtual ICollection<books_students> books_students { get; set; }
         public virtual unit unit { get; set; }
     }
 }

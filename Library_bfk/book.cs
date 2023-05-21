@@ -17,7 +17,7 @@ namespace Library_bfk
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public book()
         {
-            this.book_student = new HashSet<book_student>();
+            this.books_students = new HashSet<books_students>();
         }
     
         public long id { get; set; }
@@ -31,6 +31,6 @@ namespace Library_bfk
         public string status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<book_student> book_student { get; set; }
+        public virtual ICollection<books_students> books_students { get; set; }
     }
 }

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище library_bfkModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="publisher" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="year" Type="smallint" Nullable="false" />
+    <Property Name="author" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="pages" Type="smallint" Nullable="false" />
+    <Property Name="isbn" Type="nvarchar" MaxLength="250" />
+    <Property Name="inventory_number" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "library_bfk.dbo.books_students" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="books_students">
+    <Key>
+      <PropertyRef Name="book_id" />
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="date_issue" />
+    </Key>
+    <Property Name="book_id" Type="bigint" Nullable="false" />
+    <Property Name="student_id" Type="bigint" Nullable="false" />
+    <Property Name="date_issue" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="faculty">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="head_name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="head_surname" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="head_name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="head_surname" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="id_faculty" Type="bigint" Nullable="false" />
+    <Property Name="id_unit" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stud">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="specialty" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="group_id" Type="bigint" Nullable="false" />
+    <Property Name="faculty_id" Type="bigint" Nullable="false" />
+    <Property Name="unit_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="unit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="head_name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="head_surname" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="id_faculty" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_books_students_book">
+    <End Role="book" Type="Self.book" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="books_students" Type="Self.books_students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="books_students">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_books_students_stud">
+    <End Role="stud" Type="Self.stud" Multiplicity="1" />
+    <End Role="books_students" Type="Self.books_students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="books_students">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_faculty">
+    <End Role="faculty" Type="Self.faculty" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="group" Type="Self.group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="faculty">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group">
+        <PropertyRef Name="id_faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_unit">
+    <End Role="unit" Type="Self.unit" Multiplicity="1" />
+    <End Role="group" Type="Self.group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="group">
+        <PropertyRef Name="id_unit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stud_faculty">
+    <End Role="faculty" Type="Self.faculty" Multiplicity="1" />
+    <End Role="stud" Type="Self.stud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="faculty">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stud">
+        <PropertyRef Name="faculty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stud_group">
+    <End Role="group" Type="Self.group" Multiplicity="1" />
+    <End Role="stud" Type="Self.stud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stud">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stud_unit">
+    <End Role="unit" Type="Self.unit" Multiplicity="1" />
+    <End Role="stud" Type="Self.stud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="stud">
+        <PropertyRef Name="unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_unit_faculty">
+    <End Role="faculty" Type="Self.faculty" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="unit" Type="Self.unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="faculty">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="unit">
+        <PropertyRef Name="id_faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище library_bfkModelContainer">
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="faculty" EntityType="Self.faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="group" EntityType="Self.group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stud" EntityType="Self.stud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unit" EntityType="Self.unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="books_students" EntityType="Self.books_students" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [books_students].[book_id] AS [book_id], 
+    [books_students].[student_id] AS [student_id], 
+    [books_students].[date_issue] AS [date_issue]
+    FROM [dbo].[books_students] AS [books_students]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_books_students_book" Association="Self.FK_books_students_book">
+      <End Role="book" EntitySet="book" />
+      <End Role="books_students" EntitySet="books_students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_books_students_stud" Association="Self.FK_books_students_stud">
+      <End Role="stud" EntitySet="stud" />
+      <End Role="books_students" EntitySet="books_students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_faculty" Association="Self.FK_group_faculty">
+      <End Role="faculty" EntitySet="faculty" />
+      <End Role="group" EntitySet="group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_unit" Association="Self.FK_group_unit">
+      <End Role="unit" EntitySet="unit" />
+      <End Role="group" EntitySet="group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stud_faculty" Association="Self.FK_stud_faculty">
+      <End Role="faculty" EntitySet="faculty" />
+      <End Role="stud" EntitySet="stud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stud_group" Association="Self.FK_stud_group">
+      <End Role="group" EntitySet="group" />
+      <End Role="stud" EntitySet="stud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stud_unit" Association="Self.FK_stud_unit">
+      <End Role="unit" EntitySet="unit" />
+      <End Role="stud" EntitySet="stud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_unit_faculty" Association="Self.FK_unit_faculty">
+      <End Role="faculty" EntitySet="faculty" />
+      <End Role="unit" EntitySet="unit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

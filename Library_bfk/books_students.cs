@@ -12,13 +12,13 @@ namespace Library_bfk
     using System;
     using System.Collections.Generic;
     
-    public partial class book_student
+    public partial class books_students
     {
         public long book_id { get; set; }
         public long student_id { get; set; }
         public System.DateTime date_issue { get; set; }
     
         public virtual book book { get; set; }
-        public virtual student student { get; set; }
+        public virtual stud stud { get; set; }
     }
 }
